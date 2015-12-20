@@ -38,3 +38,7 @@
                            [nlmsg-flags _uint16]
                            [nlmsg-seq   _uint32]
                            [nlmsg-pid   _uint32]))
+
+(define _mnl_attr_cb_t (make-ctype (_fun _nlattr-pointer _pointer -> _int) #f #f))
+
+(provide (all-defined-out))
