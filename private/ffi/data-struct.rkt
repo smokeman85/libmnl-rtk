@@ -41,4 +41,6 @@
 
 (define _mnl_attr_cb_t (make-ctype (_fun _nlattr-pointer _pointer -> _int) #f #f))
 
+(define-cstruct _rtgenmsg ([rtgen-family _ubyte]))
+
 (provide (all-defined-out))
