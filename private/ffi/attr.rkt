@@ -106,3 +106,6 @@
 
 ;void mnl_attr_nest_cancel (struct nlmsghdr *nlh, struct nlattr *start)
 (define-libmnl mnl_attr_nest_cancel (_fun _nlmsghdr-pointer _nlattr-pointer -> _void))
+
+(provide (all-defined-out))
+

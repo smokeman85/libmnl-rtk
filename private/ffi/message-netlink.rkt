@@ -40,3 +40,5 @@
 
 ;void mnl_nlmsg_fprintf (FILE *fd, const void *data, size_t datalen, size_t extra_header_size)
 (define-libmnl mnl_nlmsg_fprintf (_fun _pointer _pointer _size _size -> _void))
+
+(provide (all-defined-out))
