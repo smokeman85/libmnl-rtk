@@ -37,4 +37,38 @@
 ;Crypto layer
 (define NETLINK_CRYPTO          21)
 
+;It is request message
+(define NLM_F_REQUEST           1)
+;Multipart message, terminated by NLMSG_DONE
+(define NLM_F_MULTI             2)
+;Reply with ack, with zero or error code
+(define NLM_F_ACK               4)
+;Echo this request
+(define NLM_F_ECHO              8)
+;Dump was inconsistent due to sequence change
+(define NLM_F_DUMP_INTR         16)
+;Dump was filtered as requested
+(define NLM_F_DUMP_FILTERED     32)
+
+;Modifiers to GET request
+
+;specify tree root
+(define NLM_F_ROOT      #x100)
+;return all matching
+(define NLM_F_MATCH     #x200)
+;atomic GET
+(define NLM_F_ATOMIC    #x400)
+(define NLM_F_DUMP      (bitwise-ior NLM_F_ROOT NLM_F_MATCH))
+
+;Modifiers to NEW request
+
+;Override existing
+(define NLM_F_REPLACE   #x100)
+;Do not touch, if it exists
+(define NLM_F_EXCL      #x200)
+;Create, if it does not exist
+(define NLM_F_CREATE    #x400)
+;Add to end of list
+(define NLM_F_APPEND    #x800)
+
 (provide (all-defined-out))
