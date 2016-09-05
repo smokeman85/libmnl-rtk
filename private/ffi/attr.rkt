@@ -2,6 +2,7 @@
 
 (require ffi/unsafe
          ffi/unsafe/define)
+
 (require "data-struct.rkt")
 (require "define-lib.rkt")
 
@@ -106,6 +107,18 @@
 
 ;void mnl_attr_nest_cancel (struct nlmsghdr *nlh, struct nlattr *start)
 (define-libmnl mnl_attr_nest_cancel (_fun _nlmsghdr-pointer _nlattr-pointer -> _void))
+
+;callback API
+
+(define MNL_CB_ERROR		-1)
+(define MNL_CB_STOP		 0)
+(define MNL_CB_OK		 1)
+
+;typedef int (*mnl_cb_t)(const struct nlmsghdr *nlh, void *data);
+(define _mnl_cb_t (_fun _nlmsghdr-pointer _pointer -> _int))
+;extern int mnl_cb_run(const void *buf, size_t numbytes, unsigned int seq,
+;		      unsigned int portid, mnl_cb_t cb_data, void *data);
+(define-libmnl mnl_cb_run (_fun _pointer _size _uint _uint _mnl_cb_t _pointer -> _int))
 
 (provide (all-defined-out))
 
