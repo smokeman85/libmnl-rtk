@@ -52,7 +52,7 @@
 (define-libmnl mnl_attr_get_u64 (_fun _nlattr-pointer -> _uint64))
 
 ;const char * mnl_attr_get_str (const struct nlattr *attr)
-(define-libmnl mnl_attr_get_str (_fun _nlattr-pointer -> _pointer))
+(define-libmnl mnl_attr_get_str (_fun _nlattr-pointer -> _string))
   
 ;void mnl_attr_put (struct nlmsghdr *nlh, uint16_t type, size_t len, const void *data)
 (define-libmnl mnl_attr_put (_fun _nlmsghdr-pointer _uint16 _size _pointer -> _void))
