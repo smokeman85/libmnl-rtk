@@ -12,12 +12,24 @@
 
 (define buf (malloc 'atomic 8192))
 (define MNL_SOCKET_AUTOPID 0)
+(define IFLA_MAX 42)
+(define IFLA_IFNAME 3)
+(define IFLA_MTU 4)
+
+(define (data_attr_cb attr data)
+  (when (> (mnl_attr_type_valid attr IFLA_MAX) 0)
+    (begin
+      (when (= (mnl_attr_get_type attr) IFLA_MTU)
+          (displayln (mnl_attr_get_u32 attr)))
+      (when (= (mnl_attr_get_type attr) IFLA_IFNAME)
+          (displayln (mnl_attr_get_str attr)))))
+  MNL_CB_OK)
 
 (define (data_cb nlh data)
   (let ([ifm (mnl_nlmsg_get_payload nlh)])
-    (displayln (ifinfomsg-ifi_index (ptr-ref ifm _ifinfomsg))))
+    (displayln (ifinfomsg-ifi_index (ptr-ref ifm _ifinfomsg)))
+    (mnl_attr_parse nlh (ctype-sizeof _ifinfomsg) data_attr_cb #f))
   MNL_CB_OK)
-   
 
 (define (reciving ret seq portid nl)
   (if (> ret 0)
