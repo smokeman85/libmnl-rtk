@@ -20,8 +20,8 @@
           (display (ptr-to-char buffer i))))
 
 (define (main)
-  (let ([nl (mnl_socket_open NETLINK_KOBJECT_UEVENT)])
-    (let ([result (mnl_socket_bind nl RTMGRP_LINK MNL_SOCKET_AUTOPID)])
-      (let ([len (mnl_socket_recvfrom nl buf 8192)])
-        (print-buffer buf len)))
-      (mnl_socket_close nl)))
+  (let* ([nl (mnl_socket_open NETLINK_KOBJECT_UEVENT)]
+         [result (mnl_socket_bind nl RTMGRP_LINK MNL_SOCKET_AUTOPID)]
+         [len (mnl_socket_recvfrom nl buf 8192)])
+    (print-buffer buf len)
+    (mnl_socket_close nl)))
