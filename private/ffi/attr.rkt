@@ -70,10 +70,10 @@
 (define-libmnl  mnl_attr_put_u64 (_fun _nlmsghdr-pointer _uint16 _uint64 -> _void))
   
 ;void mnl_attr_put_str (struct nlmsghdr *nlh, uint16_t type, const char *data)
-(define-libmnl mnl_attr_put_str (_fun _nlmsghdr-pointer _uint16 _pointer -> _void))
+(define-libmnl mnl_attr_put_str (_fun _nlmsghdr-pointer _uint16 _string -> _void))
 
 ;void mnl_attr_put_strz (struct nlmsghdr *nlh, uint16_t type, const char *data)
-(define-libmnl mnl_attr_put_strz (_fun _nlmsghdr-pointer _uint16 _pointer -> _void))
+(define-libmnl mnl_attr_put_strz (_fun _nlmsghdr-pointer _uint16 _string -> _void))
 
 ;struct nlattr * mnl_attr_nest_start (struct nlmsghdr *nlh, uint16_t type)
 (define-libmnl mnl_attr_nest_start (_fun _nlmsghdr-pointer _uint16 -> _nlattr-pointer))
@@ -94,10 +94,10 @@
 (define-libmnl mnl_attr_put_u64_check (_fun _nlmsghdr-pointer _size _uint16 _uint64 -> _bool))
 
 ;bool mnl_attr_put_str_check (struct nlmsghdr *nlh, size_t buflen, uint16_t type, const char *data)
-(define-libmnl mnl_attr_put_str_check (_fun _nlmsghdr-pointer _size _uint16 _pointer -> _bool))
+(define-libmnl mnl_attr_put_str_check (_fun _nlmsghdr-pointer _size _uint16 _string -> _bool))
 
 ;bool mnl_attr_put_strz_check (struct nlmsghdr *nlh, size_t buflen, uint16_t type, const char *data)
-(define-libmnl mnl_attr_put_strz_check (_fun _nlmsghdr-pointer _size _uint16 _pointer -> _bool))
+(define-libmnl mnl_attr_put_strz_check (_fun _nlmsghdr-pointer _size _uint16 _string -> _bool))
 
 ;struct nlattr * mnl_attr_nest_start_check (struct nlmsghdr *nlh, size_t buflen, uint16_t type)
 (define-libmnl mnl_attr_nest_start_check (_fun _nlmsghdr-pointer _size _uint16 -> _nlattr-pointer))
